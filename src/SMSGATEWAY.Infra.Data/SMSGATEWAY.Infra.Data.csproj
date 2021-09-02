@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.9" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\SMSGATEWAY.Core\SMSGATEWAY.Core.csproj" />
+      <ProjectReference Include="..\SMSGATEWAY.DOMAIN\SMSGATEWAY.DOMAIN.csproj" />
+    </ItemGroup>
+
+</Project>
