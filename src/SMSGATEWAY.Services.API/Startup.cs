@@ -11,21 +11,33 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using SMSGATEWAY.Services.API.StartupExtensions;
 
 namespace SMSGATEWAY.Services.API
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        
+
+        public Startup(IConfiguration configuration,IWebHostEnvironment env)
         {
+            _env = env;
             Configuration = configuration;
         }
 
         public IConfiguration Configuration { get; }
+        private readonly IWebHostEnvironment _env;
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            
+            // ----- Database -----
+            services.AddCustomizedDatabase(Configuration, _env);
+
+            // ----- Auth -----
+            services.AddCustomizedAuth(Configuration);
+            
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
