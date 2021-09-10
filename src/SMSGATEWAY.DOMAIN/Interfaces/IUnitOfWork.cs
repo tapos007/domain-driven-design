@@ -3,8 +3,8 @@ using System.Threading.Tasks;
 
 namespace SMSGATEWAY.DOMAIN.Interfaces
 {
-    public interface IUnitOfWork : IAsyncDisposable
+    public interface IUnitOfWork : IDisposable
     {
-        Task<bool> CommitAsync();
+        bool Commit();
     }
 }

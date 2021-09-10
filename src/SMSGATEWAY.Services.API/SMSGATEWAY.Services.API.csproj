@@ -6,6 +6,7 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="9.0.0" />
         <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.9">
           <PrivateAssets>all</PrivateAssets>
           <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -19,6 +20,7 @@
     <ItemGroup>
       <ProjectReference Include="..\SMSGATEWAY.Infra.Data\SMSGATEWAY.Infra.Data.csproj" />
       <ProjectReference Include="..\SMSGATEWAY.Infra.Identity\SMSGATEWAY.Infra.Identity.csproj" />
+      <ProjectReference Include="..\SMSGATEWAY.Infra.IoC\SMSGATEWAY.Infra.IoC.csproj" />
     </ItemGroup>
 
 </Project>

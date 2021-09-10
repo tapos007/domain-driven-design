@@ -24,11 +24,28 @@ namespace SMSGATEWAY.Services.API.StartupExtensions
             ApplicationDatabaseConfiguration(services, configuration, env, serverVersion);
             
             AuthDatabaseConfiguration(services, configuration, env, serverVersion);
+            EventDatabaseConfiguration(services, configuration, env, serverVersion);
             
             
 
 
             return services;
+        }
+
+        private static void EventDatabaseConfiguration(IServiceCollection services, IConfiguration configuration, IWebHostEnvironment env, MySqlServerVersion serverVersion)
+        {
+            services.AddDbContext<EventStoreSqlContext>(
+                dbContextOptions =>
+                {
+                    dbContextOptions
+                        .UseMySql(configuration.GetConnectionString("DefaultConnection"), serverVersion);
+
+                    if (!env.IsProduction())
+                    {
+                        dbContextOptions.EnableSensitiveDataLogging() // <-- These two calls are optional but help
+                            .EnableDetailedErrors(); // <-- with debugging (remove for production).
+                    }
+                });
         }
 
         private static void AuthDatabaseConfiguration(IServiceCollection services, IConfiguration configuration,

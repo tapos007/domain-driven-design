@@ -1,6 +1,6 @@
 using System;
 
-namespace SMSGATEWAY.Core.Models
+namespace SMSGATEWAY.Domain.Core.Models
 {
     public abstract class Entity
     {

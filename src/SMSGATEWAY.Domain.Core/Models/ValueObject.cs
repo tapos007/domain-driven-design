@@ -1,4 +1,4 @@
-namespace SMSGATEWAY.Core.Models
+namespace SMSGATEWAY.Domain.Core.Models
 {
     public abstract class ValueObject<T> where T : ValueObject<T>
     {

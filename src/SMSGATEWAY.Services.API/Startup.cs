@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -11,6 +12,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using SMSGATEWAY.Infra.IoC;
 using SMSGATEWAY.Services.API.StartupExtensions;
 
 namespace SMSGATEWAY.Services.API
@@ -34,6 +36,13 @@ namespace SMSGATEWAY.Services.API
             
             // ----- Database -----
             services.AddCustomizedDatabase(Configuration, _env);
+            
+            // Adding MediatR for Domain Events and Notifications
+            services.AddMediatR(typeof(Startup));
+            
+            
+            // .NET Native DI Abstraction
+            RegisterServices(services);
 
             // ----- Auth -----
             services.AddCustomizedAuth(Configuration);
@@ -62,6 +71,12 @@ namespace SMSGATEWAY.Services.API
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
+        }
+        
+        private static void RegisterServices(IServiceCollection services)
+        {
+            // Adding dependencies from another layers (isolated from Presentation)
+            NativeInjectorBootStrapper.RegisterServices(services);
         }
     }
 }

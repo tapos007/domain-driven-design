@@ -1,5 +1,5 @@
 using System;
-using SMSGATEWAY.Core.Models;
+using SMSGATEWAY.Domain.Core.Models;
 
 namespace SMSGATEWAY.DOMAIN.Models
 {

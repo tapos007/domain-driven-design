@@ -5,11 +5,8 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\SMSGATEWAY.Domain.Core\SMSGATEWAY.Domain.Core.csproj" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <Folder Include="Commands" />
+      <PackageReference Include="FluentValidation.AspNetCore" Version="10.3.3" />
+      <PackageReference Include="MediatR" Version="9.0.0" />
     </ItemGroup>
 
 </Project>

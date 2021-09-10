@@ -13,15 +13,15 @@ namespace SMSGATEWAY.Infra.Data.UoW
             _context = context;
         }
 
-        public async Task<bool> CommitAsync()
+        public bool Commit()
         {
-            return await _context.SaveChangesAsync() > 0;
+            return _context.SaveChanges() > 0;
         }
 
 
-        public async ValueTask DisposeAsync()
+        public void Dispose()
         {
-            await _context.DisposeAsync();
+            _context.Dispose();
         }
     }
 }

@@ -5,7 +5,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
-using SMSGATEWAY.Core.Models;
+using SMSGATEWAY.Domain.Core.Models;
 using SMSGATEWAY.DOMAIN.Models;
 
 namespace SMSGATEWAY.Infra.Data.Context
